@@ -74,5 +74,6 @@ get '/bookings' do
 end   
 
 get '/client/:id' do 
-  erb "hello"
+  @client = Client.find(params[:id])
+  erb :client
 end   
