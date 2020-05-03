@@ -19,6 +19,7 @@ end
 
 class Contact < ActiveRecord::Base
 end 
+
 before do 
  @barbers = Barber.order "created_at DESC"
 end  
@@ -39,9 +40,11 @@ end
 post "/visit" do
     
     c = Client.new params[:client]
-    c.save 
-      erb "<h2> You write down!</h2>"
-        
+   if  c.save 
+        erb "<h2> You write down!</h2>"
+      else 
+        erb "<h2>Error!</h2>" 
+    end      
 end
 
 get '/contacts' do 
@@ -52,6 +55,8 @@ post '/contacts' do
   @username = params[:username]
   @text = params[:text]
   Contact.create :name => @username, :text => @text
+   
+
     erb "Messege goin"
   
 end 
