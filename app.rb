@@ -62,3 +62,7 @@ post '/contacts' do
     erb "Messege goin"
   
 end 
+
+get '/barber/:id' do 
+    erb :barber
+end   
