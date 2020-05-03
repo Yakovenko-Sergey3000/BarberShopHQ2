@@ -34,15 +34,9 @@ get '/contacts' do
 end
 
 post "/visit" do
-  @user_name = params[:username]
-  @phone = params[:phone]
-  @data_stamp = params[:datetime]
-  @barber = params[:name]
-  @color = params[:color]
-
-    Client.create :name => @user_name,:phone => @phone,:datestamp => @data_stamp,:barer => @barber,:color => @color 
-      
-      
+    
+    c = Client.new params[:client]
+    c.save 
       erb "<h2> You write down!</h2>"
         
 end
